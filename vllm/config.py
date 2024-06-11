@@ -595,7 +595,7 @@ class ParallelConfig:
                                  f"'{self.distributed_executor_backend}'.")
 
         if self.distributed_executor_backend is None and self.world_size > 1:
-            if is_hip():
+            if True:
                 logger.info("Using torchrun for multi-GPU on "
                             "ROCM platform. Use --worker-use-ray or "
                             "--distributed-executor-backend={ray, mp} to "

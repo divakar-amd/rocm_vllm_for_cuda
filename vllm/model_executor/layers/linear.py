@@ -5,7 +5,7 @@ import torch
 import torch.nn.functional as F
 from torch.nn.parameter import Parameter
 
-from vllm import _custom_C
+#from vllm import _custom_C
 from vllm.distributed import (divide, get_tensor_model_parallel_rank,
                               get_tensor_model_parallel_world_size,
                               split_tensor_along_last_dim,
@@ -14,7 +14,7 @@ from vllm.distributed import (divide, get_tensor_model_parallel_rank,
 from vllm.logger import init_logger
 from vllm.model_executor.layers.quantization.base_config import (
     QuantizationConfig, QuantizeMethodBase)
-from vllm.model_executor.layers.tuned_gemm import tgemm
+#from vllm.model_executor.layers.tuned_gemm import tgemm
 from vllm.model_executor.utils import set_weight_attrs
 from vllm.utils import is_hip
 
@@ -98,7 +98,7 @@ class UnquantizedLinearMethod(LinearMethodBase):
             return tgemm.mm(x, weight)
         elif bias is not None:
             return F.linear(x, weight, bias)
-        return tgemm.mm(x, weight)
+        return F.linear(x, weight)
 
 
 class LinearBase(torch.nn.Module):
